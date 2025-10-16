@@ -1,3 +1,4 @@
+import { redirect } from "next/dist/server/api-utils";
 import { cookies } from "next/headers";
 
 const { default: axios } = require("axios");
@@ -17,6 +18,17 @@ request.interceptors.request.use(
     return config;
   },
   (error) => {
+    return Promise.reject(error);
+  }
+);
+
+request.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      console.log("Unauthorized! Redirecting to login...");
+      redirect("/");
+    }
     return Promise.reject(error);
   }
 );
