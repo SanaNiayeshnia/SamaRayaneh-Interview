@@ -2,7 +2,7 @@ import { Alert, Snackbar } from "@mui/material";
 
 function Toast({
   isOpen = false,
-  duration = 5000,
+  duration = 3000,
   onClose,
   text = "",
   severity = "info",
