@@ -63,9 +63,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`${vazirmatn?.className} antialiased text-gray-900`}>
-        <GlobalContextProvider>
-          <div className="max-w-7xl mx-auto">{children}</div>
-        </GlobalContextProvider>
+        <GlobalContextProvider>{children}</GlobalContextProvider>
       </body>
     </html>
   );
