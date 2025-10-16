@@ -7,7 +7,7 @@ export default function DashboardLayout({ children }) {
       <DashboardHeader />
       <div className="flex flex-grow">
         <DashboardNavbar />
-        <main className="overflow-auto flex-grow p-4 bg-gray-100">
+        <main className="overflow-auto flex-grow py-4 px-8 bg-gray-100">
           {children}
         </main>
       </div>
