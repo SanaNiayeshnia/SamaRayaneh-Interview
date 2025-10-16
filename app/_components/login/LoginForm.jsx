@@ -15,9 +15,17 @@ function LoginForm() {
   useEffect(() => {
     //display a toast based on the form status
     if (state?.status === "rejected")
-      setToast({ text: "ورود با خطا مواجه شد!", severity: "error" });
+      setToast({
+        text: "ورود با خطا مواجه شد!",
+        severity: "error",
+        open: true,
+      });
     else if (state?.status === "succeeded") {
-      setToast({ text: "با موفقیت وارد شدید.", severity: "success" });
+      setToast({
+        text: "با موفقیت وارد شدید.",
+        severity: "success",
+        open: true,
+      });
       router.replace("/dashboard");
     }
   }, [state]);
