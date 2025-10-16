@@ -2,7 +2,7 @@
 import { loginAction } from "@/app/_lib/actions";
 import { useActionState, useEffect } from "react";
 import Button from "../ui/Button";
-import { useGlobalContext } from "@/app/_contexts/globalContext/GlobalContextProvider";
+import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
 import { useRouter } from "next/navigation";
 
 function LoginForm() {

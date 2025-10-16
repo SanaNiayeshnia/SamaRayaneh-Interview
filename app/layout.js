@@ -1,6 +1,7 @@
-import GlobalContextProvider from "./_contexts/globalContext/GlobalContextProvider";
+import GlobalContextProvider from "./_providers/contexts/GlobalContextProvider";
 import "./globals.css";
 import localFont from "next/font/local";
+import MUIThemeProvider from "./_providers/MUIThemeProvider";
 
 export const metadata = {
   title: { template: `%s | سما رایانه`, default: "سما رایانه" },
@@ -56,13 +57,18 @@ const vazirmatn = localFont({
     },
   ],
   display: "swap",
+  variable: "--font-vazirmatn",
 });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${vazirmatn?.className} antialiased text-gray-900`}>
-        <GlobalContextProvider>{children}</GlobalContextProvider>
+      <body
+        className={`${vazirmatn?.className} ${vazirmatn?.variable} antialiased text-gray-900 min-h-screen`}
+      >
+        <MUIThemeProvider>
+          <GlobalContextProvider>{children}</GlobalContextProvider>
+        </MUIThemeProvider>
       </body>
     </html>
   );

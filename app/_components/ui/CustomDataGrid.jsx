@@ -3,29 +3,29 @@ import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 90 },
+  { field: "id", headerName: "شناسه", width: 90 },
   {
-    field: "firstName",
-    headerName: "First name",
+    field: "name",
+    headerName: "نام و نام‌خانوادگی",
     width: 150,
     editable: true,
   },
   {
-    field: "lastName",
-    headerName: "Last name",
+    field: "dateOfBirth",
+    headerName: "تاریخ تولد",
     width: 150,
     editable: true,
   },
   {
-    field: "age",
-    headerName: "Age",
+    field: "email",
+    headerName: "ایمیل",
     type: "number",
     width: 110,
     editable: true,
   },
   {
-    field: "fullName",
-    headerName: "Full name",
+    field: "isActive",
+    headerName: "وضعیت",
     description: "This column has a value getter and is not sortable.",
     sortable: false,
     width: 160,
