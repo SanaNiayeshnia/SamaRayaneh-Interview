@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { request } from "./request";
+import { redirect } from "next/navigation";
 
 export async function loginAction() {
   const res = await request.get("/Interview/Auth");
@@ -17,4 +18,9 @@ export async function loginAction() {
     return {
       status: "rejected",
     };
+}
+
+export async function logoutAction() {
+  (await cookies())?.delete("accessToken");
+  redirect("/");
 }
