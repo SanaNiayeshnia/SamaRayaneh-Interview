@@ -6,12 +6,23 @@ const globalContext = createContext();
 
 function GlobalContextProvider({ children }) {
   //set up for using MUI toast(even though handling toasts are way easier with other libraries!)
-  const [toast, setToast] = useState(null);
+  const [toast, setToast] = useState({ open: false });
   function resetToast() {
     setToast((toast) => ({ ...toast, open: false }));
   }
 
-  const value = { toast, setToast };
+  const [modal, setModal] = useState({ open: false });
+  function openModal(params) {
+    setModal({ open: true, ...params });
+  }
+  function closeModal() {
+    setModal((modal) => ({
+      ...modal,
+      open: false,
+    }));
+  }
+
+  const value = { toast, setToast, modal, openModal, closeModal };
 
   return (
     <globalContext.Provider value={value}>

@@ -2,6 +2,7 @@ import GlobalContextProvider from "./_providers/contexts/GlobalContextProvider";
 import "./globals.css";
 import localFont from "next/font/local";
 import MUIThemeProvider from "./_providers/MUIThemeProvider";
+import CustomModal from "./_components/ui/CustomModal";
 
 export const metadata = {
   title: { template: `%s | سما رایانه`, default: "سما رایانه" },
@@ -67,7 +68,10 @@ export default function RootLayout({ children }) {
         className={`${vazirmatn?.className} ${vazirmatn?.variable} antialiased text-gray-900 min-h-screen`}
       >
         <MUIThemeProvider>
-          <GlobalContextProvider>{children}</GlobalContextProvider>
+          <GlobalContextProvider>
+            {children}
+            <CustomModal />
+          </GlobalContextProvider>
         </MUIThemeProvider>
       </body>
     </html>
