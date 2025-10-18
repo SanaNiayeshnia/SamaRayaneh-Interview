@@ -1,6 +1,6 @@
 "use client";
 import { Box } from "@mui/material";
-import { DataGrid, GridPagination } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 
 function CustomDataGrid({
   columns = [],
@@ -25,16 +25,9 @@ function CustomDataGrid({
           localeText={{
             noRowsLabel,
           }}
-          slots={{
-            pagination: GridPagination,
-          }}
-          slotProps={{
-            pagination: {
-              labelDisplayedRows: ({ from, to, count }) =>
-                count === -1 ? `0 از ${from}` : `${from}–${to} از ${count}`,
-            },
-          }}
           sx={{ borderRadius: "8px" }}
+          disableColumnMenu
+          disableColumnSorting
         />
       </Box>
     </Box>

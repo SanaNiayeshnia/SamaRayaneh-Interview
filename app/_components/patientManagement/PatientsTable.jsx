@@ -12,23 +12,32 @@ const contextMenuItems = [
 ];
 
 const columns = [
-  { field: "id", headerName: "شناسه", flex: 0.5, align: "right" },
+  {
+    field: "id",
+    headerName: "شناسه",
+    flex: 0.5,
+    align: "right",
+    editable: false,
+  },
   {
     field: "name",
     headerName: "نام و نام‌خانوادگی",
     flex: 1.2,
     align: "right",
+    editable: false,
   },
   {
     field: "dateOfBirth",
     headerName: "تاریخ تولد",
     flex: 0.8,
     align: "right",
+    editable: false,
   },
   {
     field: "email",
     headerName: "ایمیل",
     flex: 1.2,
+    editable: false,
   },
   {
     field: "isActive",
@@ -48,6 +57,7 @@ const columns = [
         }}
       />
     ),
+    editable: false,
   },
   {
     field: "actions",
@@ -55,6 +65,7 @@ const columns = [
     flex: 0.6,
     align: "center",
     renderCell: (params) => <ContextMenu items={contextMenuItems} />,
+    editable: false,
   },
 ];
 
