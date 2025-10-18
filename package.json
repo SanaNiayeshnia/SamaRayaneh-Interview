@@ -13,12 +13,16 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.2",
+    "@mui/stylis-plugin-rtl": "^7.3.3",
     "@mui/x-data-grid": "^8.14.1",
+    "@mui/x-date-pickers": "^8.14.1",
     "axios": "^1.8.4",
-    "moment-jalaali": "^0.10.4",
+    "date-fns-jalali": "^4.0.0-0",
     "next": "15.5.5",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.65.0",
+    "stylis": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

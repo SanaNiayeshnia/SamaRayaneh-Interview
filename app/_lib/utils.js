@@ -1,6 +1,5 @@
-import moment from "moment-jalaali";
-moment.loadPersian({ usePersianDigits: true });
+import { format } from "date-fns-jalali";
 
-export function formatDate(date, format = "jYYYY/jMM/jDD") {
-  return moment(date).format(format);
+export function formatDate(date, formatStr = "yyyy/MM/dd") {
+  return format(date, formatStr);
 }
