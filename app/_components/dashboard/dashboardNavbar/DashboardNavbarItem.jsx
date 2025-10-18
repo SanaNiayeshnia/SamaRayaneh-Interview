@@ -14,7 +14,7 @@ export default function DashboardNavbarItem({ item }) {
         className={`${
           isActive
             ? "text-secondary-500 font-medium"
-            : "hover:text-secondary-500 hover:pr-2 cursor-pointer"
+            : "hover:pr-2 cursor-pointer"
         } transition-all duration-300 flex items-center gap-2`}
       >
         {item?.icon}

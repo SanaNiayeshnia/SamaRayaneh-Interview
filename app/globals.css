@@ -24,4 +24,6 @@
   --color-secondary-700: #447926;
   --color-secondary-800: #335b1d;
   --color-secondary-900: #213d13;
+
+  --shadow-custom: 2px 2px 3px 0 var(--color-gray-400);
 }

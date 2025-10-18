@@ -27,6 +27,7 @@ request.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       console.log("Unauthorized! Redirecting to login...");
+      cookies().delete("accessToken");
       redirect("/");
     }
     return Promise.reject(error);

@@ -8,7 +8,9 @@ function ErrorBoundary({ error, reset }) {
       <h2 className="text-3xl font-semibold text-primary-500">
         به نظر می‌رسد مشکلی رخ داده است!
       </h2>
-      <p className="max-w-10/12">(خطای مربوطه: {error.message})</p>
+      <p className="max-w-10/12" dir="ltr">
+        (Error: {error.message})
+      </p>
       <div className="flex items-center gap-2">
         <Button onClick={reset}>دوباره تلاش کنید</Button>
         <Button href="/dashboard">بازگشت به داشبورد</Button>

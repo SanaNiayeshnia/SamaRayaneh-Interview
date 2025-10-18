@@ -1,67 +1,42 @@
 "use client";
 import { Box } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridPagination } from "@mui/x-data-grid";
 
-const columns = [
-  { field: "id", headerName: "شناسه", width: 90 },
-  {
-    field: "name",
-    headerName: "نام و نام‌خانوادگی",
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "dateOfBirth",
-    headerName: "تاریخ تولد",
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "email",
-    headerName: "ایمیل",
-    type: "number",
-    width: 110,
-    editable: true,
-  },
-  {
-    field: "isActive",
-    headerName: "وضعیت",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
-  },
-];
-
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 14 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 31 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 31 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 11 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
-
-function CustomDataGrid() {
+function CustomDataGrid({
+  columns = [],
+  rows = [],
+  noRowsLabel = "هیچ داده‌ای برای نمایش وجود ندارد!",
+}) {
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
+    <Box sx={{ overflowX: "auto", width: "100%" }}>
+      <Box sx={{ height: 500, width: "100%", minWidth: "800px" }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 10,
+              },
             },
-          },
-        }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
+          }}
+          pageSizeOptions={[10]}
+          disableRowSelectionOnClick
+          localeText={{
+            noRowsLabel,
+          }}
+          slots={{
+            pagination: GridPagination,
+          }}
+          slotProps={{
+            pagination: {
+              labelDisplayedRows: ({ from, to, count }) =>
+                count === -1 ? `0 از ${from}` : `${from}–${to} از ${count}`,
+            },
+          }}
+          sx={{ borderRadius: "8px" }}
+        />
+      </Box>
     </Box>
   );
 }
