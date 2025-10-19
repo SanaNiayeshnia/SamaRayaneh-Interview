@@ -9,7 +9,7 @@ const sortOptions = [
 
 function PatientSorting() {
   const searchParams = useSearchParams();
-  const sortFilter = searchParams.get("sort") || "name";
+  const sortFilter = searchParams.get("sort") || "name-asc";
   const router = useRouter();
   const pathname = usePathname();
 

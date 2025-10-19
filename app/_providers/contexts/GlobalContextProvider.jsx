@@ -5,6 +5,8 @@ import { createContext, useContext, useState } from "react";
 const globalContext = createContext();
 
 function GlobalContextProvider({ children }) {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   //set up for using MUI toast(even though handling toasts are way easier with other libraries!)
   const [toast, setToast] = useState({ open: false });
   function resetToast() {
@@ -25,7 +27,15 @@ function GlobalContextProvider({ children }) {
     }));
   }
 
-  const value = { toast, openToast, modal, openModal, closeModal };
+  const value = {
+    toast,
+    openToast,
+    modal,
+    openModal,
+    closeModal,
+    isDrawerOpen,
+    setIsDrawerOpen,
+  };
 
   return (
     <globalContext.Provider value={value}>

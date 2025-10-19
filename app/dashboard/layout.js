@@ -6,7 +6,9 @@ export default function DashboardLayout({ children }) {
     <div className="flex flex-col h-screen">
       <DashboardHeader />
       <div className="flex flex-grow">
-        <DashboardNavbar />
+        <div className="hidden md:block h-full">
+          <DashboardNavbar />
+        </div>
         <main className="overflow-auto flex-grow py-4 px-8 bg-gray-100">
           {children}
         </main>

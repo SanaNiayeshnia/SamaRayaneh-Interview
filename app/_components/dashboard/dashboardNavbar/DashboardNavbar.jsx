@@ -16,7 +16,7 @@ function DashboardNavbar() {
     },
   ];
   return (
-    <div className="border-l-2 border-primary-500 p-4 min-w-48">
+    <div className="md:border-l-2 border-primary-500 p-4 min-w-48 h-full">
       <ul className="space-y-3">
         {navItems?.map((item, index) => (
           <DashboardNavbarItem item={item} key={index} />
