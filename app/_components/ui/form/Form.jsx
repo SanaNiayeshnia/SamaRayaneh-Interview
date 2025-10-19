@@ -32,11 +32,10 @@ function Form({
           لغو
         </FormButton>
         <FormButton type="submit" disabled={isPending || formStatusPending}>
+          {submitBtnText || "تایید"}
           {(isPending || formStatusPending) && (
             <CircularProgress color="black" size="18px" />
           )}
-
-          {submitBtnText || "تایید"}
         </FormButton>
       </div>
     </form>

@@ -2,7 +2,7 @@ import Loader from "./_components/ui/Loader";
 
 function Loading() {
   return (
-    <div className="grid place-content-center place-items-center h-full">
+    <div className="grid place-content-center place-items-center min-h-screen h-full">
       <Loader />
     </div>
   );

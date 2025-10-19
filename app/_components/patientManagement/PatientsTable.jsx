@@ -10,7 +10,7 @@ import PatientStatusToggler from "./PatientStatusToggler";
 import DeletePatientForm from "./DeletePatientForm";
 import { useSearchParams } from "next/navigation";
 
-function PatientsTable({ patients = [] }) {
+function PatientsTable({ patients = [], loading = false }) {
   const { openModal } = useGlobalContext();
   const searchParams = useSearchParams();
   const patientStatusFilter = searchParams.get("status");
@@ -119,6 +119,7 @@ function PatientsTable({ patients = [] }) {
       rows={formattedPatients}
       columns={columns}
       noRowsLabel="هیچ بیماری با این فیلترها یافت نشد!"
+      loading={loading}
     />
   );
 }
