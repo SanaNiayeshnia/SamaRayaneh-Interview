@@ -1,5 +1,6 @@
 "use client";
 
+import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
@@ -8,12 +9,14 @@ function FilterBox({ title = "", hasAll = false, filterName, items = [] }) {
   const filterValue = searchParams.get(filterName);
   const router = useRouter();
   const pathname = usePathname();
+  const { modal, closeModal } = useGlobalContext();
 
   function setFilter(newFilter) {
     //add the new filter to the current searchParams
     const sParams = new URLSearchParams(searchParams);
     sParams.set(filterName, newFilter);
     router.replace(`${pathname}?${sParams.toString()}`);
+    modal?.open && closeModal();
   }
 
   function removeFilter() {
@@ -21,6 +24,7 @@ function FilterBox({ title = "", hasAll = false, filterName, items = [] }) {
     const sParams = new URLSearchParams(searchParams);
     sParams.delete(filterName);
     router.replace(`${pathname}?${sParams.toString()}`);
+    modal?.open && closeModal();
   }
 
   return (

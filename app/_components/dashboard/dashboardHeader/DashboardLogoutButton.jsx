@@ -13,7 +13,7 @@ function DashboardLogoutButton() {
 
   return (
     <button
-      className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:text-secondary-500"
+      className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:text-secondary-500 active:text-secondary-500"
       onClick={handleLogout}
     >
       خروج

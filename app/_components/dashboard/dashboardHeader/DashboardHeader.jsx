@@ -16,9 +16,11 @@ function DashboardHeader() {
     <>
       <header className="py-2 px-4 border-b-2 border-primary-500 grid grid-cols-[0.5fr_5fr_0.5fr] md:flex items-center justify-between">
         <button className="md:hidden" onClick={toggleDrawer}>
-          <MenuIcon className="!text-3xl cursor-pointer hover:text-secondary-500 transition-all duration-300" />
+          <MenuIcon className="!text-3xl cursor-pointer active:text-secondary-500 transition-all duration-300" />
         </button>
-        <Logo />
+        <div className="flex justify-center">
+          <Logo />
+        </div>
         <DashboardLogoutButton />
       </header>
       <Drawer open={isDrawerOpen} onClose={toggleDrawer}>

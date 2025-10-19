@@ -13,7 +13,7 @@ export default function Button({
     variant === "secondary"
       ? "bg-secondary-500 hover:rounded-none text-white hover:bg-secondary-600 hover:px-4"
       : variant === "primary"
-      ? "text-primary-500 bg-white border-gray-300 border hover:bg-primary-600 hover:text-white"
+      ? "text-primary-500 bg-white border-gray-300 border active:text-white active:bg-primary-600 hover:bg-primary-600 hover:text-white"
       : ""
   } ${rest.disabled ? "opacity-70" : ""} ${className}`;
 

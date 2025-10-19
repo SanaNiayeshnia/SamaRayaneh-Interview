@@ -4,8 +4,8 @@ import Button from "./_components/ui/Button";
 
 function ErrorBoundary({ error, reset }) {
   return (
-    <div className="grid h-screen place-items-center place-content-center space-y-2">
-      <h2 className="text-3xl font-semibold text-primary-500">
+    <div className="grid h-screen place-items-center place-content-center space-y-2 p-4">
+      <h2 className="text-3xl font-semibold text-primary-500 text-center">
         به نظر می‌رسد مشکلی رخ داده است!
       </h2>
       <p className="max-w-10/12" dir="ltr">

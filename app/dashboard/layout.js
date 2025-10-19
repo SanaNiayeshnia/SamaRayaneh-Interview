@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }) {
         <div className="hidden md:block h-full">
           <DashboardNavbar />
         </div>
-        <main className="overflow-auto flex-grow py-4 px-8 bg-gray-100">
+        <main className="overflow-auto flex-grow py-4 px-6 md:px-8 bg-gray-100">
           {children}
         </main>
       </div>
