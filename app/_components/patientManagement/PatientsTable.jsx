@@ -1,6 +1,6 @@
 "use client";
 import CustomDataGrid from "../ui/CustomDataGrid";
-import { formatDate } from "@/app/_lib/utils";
+import { formatDate, sortData } from "@/app/_lib/utils";
 import ContextMenu from "../ui/ContextMenu";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
@@ -14,6 +14,7 @@ function PatientsTable({ patients = [] }) {
   const { openModal } = useGlobalContext();
   const searchParams = useSearchParams();
   const patientStatusFilter = searchParams.get("status");
+  const sortFilter = searchParams.get("sort") || "name-asc";
   const filteredPatients = patientStatusFilter
     ? patients?.filter((patient) =>
         patientStatusFilter === "active"
@@ -23,6 +24,7 @@ function PatientsTable({ patients = [] }) {
           : true
       )
     : patients;
+  const sortedPatients = sortData(filteredPatients, sortFilter);
 
   const patientActions = (patient) => [
     {
@@ -51,7 +53,7 @@ function PatientsTable({ patients = [] }) {
     {
       field: "id",
       headerName: "شناسه",
-      flex: 0.5,
+      flex: 0.8,
       align: "right",
       editable: false,
     },
@@ -99,7 +101,7 @@ function PatientsTable({ patients = [] }) {
     },
   ];
 
-  const formattedPatients = filteredPatients?.map((patient) => {
+  const formattedPatients = sortedPatients?.map((patient) => {
     const { name, dateOfBirth, email, isActive, id } = patient;
 
     return {
@@ -116,7 +118,7 @@ function PatientsTable({ patients = [] }) {
     <CustomDataGrid
       rows={formattedPatients}
       columns={columns}
-      noRowsLabel="هیچ بیماری یافت نشد!"
+      noRowsLabel="هیچ بیماری با این فیلترها یافت نشد!"
     />
   );
 }

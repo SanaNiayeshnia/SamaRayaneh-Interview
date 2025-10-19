@@ -3,6 +3,7 @@ import PatientsTable from "./PatientsTable";
 import AddNewPatient from "./AddNewPatient";
 import FilterBox from "../ui/FilterBox";
 import { patientStatuses } from "@/app/_lib/variables";
+import PatientSorting from "./PatientSorting";
 
 async function PatientManagementMain() {
   const patients = await getPatients();
@@ -19,6 +20,7 @@ async function PatientManagementMain() {
           hasAll
           filterName="status"
         />
+        <PatientSorting />
         <AddNewPatient />
       </div>
       <PatientsTable patients={patients?.result} />
