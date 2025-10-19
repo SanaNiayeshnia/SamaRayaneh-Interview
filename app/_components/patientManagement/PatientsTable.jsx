@@ -1,12 +1,12 @@
 "use client";
 import CustomDataGrid from "../ui/CustomDataGrid";
 import { formatDate } from "@/app/_lib/utils";
-import { Switch } from "@mui/material";
 import ContextMenu from "../ui/ContextMenu";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
 import CreateUpdatePatientForm from "./CreateUpdatePatientForm";
+import PatientStatusToggler from "./PatientStatusToggler";
 
 function PatientsTable({ patients = [] }) {
   const { openModal } = useGlobalContext();
@@ -58,16 +58,9 @@ function PatientsTable({ patients = [] }) {
       flex: 0.6,
       align: "center",
       renderCell: (params) => (
-        <Switch
+        <PatientStatusToggler
+          patientId={params?.row?.id}
           checked={params.value}
-          color="primary"
-          onChange={(e) => {
-            console.log(
-              `Patient ${params.row.name} is now ${
-                e.target.checked ? "active" : "inactive"
-              }`
-            );
-          }}
         />
       ),
       editable: false,

@@ -56,3 +56,20 @@ export async function updatePatientAction(data, patientId) {
     return { isSuccessed: false };
   }
 }
+
+export async function togglePatientActiveStatus(patientId) {
+  try {
+    const res = await request.patch(`/Interview/patient/${patientId}/toggle`, {
+      isActive: true,
+    });
+    if (res?.status === 200) {
+      revalidatePath("dashboard/patient-management");
+      return res?.data;
+    } else if (res.status === 400) {
+      console.log("ّFailed to update the patient: Invalid model!");
+    } else console.log("ّFailed to update the patient");
+  } catch (error) {
+    console.error(error.message);
+    return { isSuccessed: false };
+  }
+}
