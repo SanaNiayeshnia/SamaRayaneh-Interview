@@ -36,7 +36,7 @@ function CustomDataGrid({
             noRowsLabel,
             paginationDisplayedRows: ({ from, to, count }) =>
               `${from}–${to} از ${count !== -1 ? count : `بیشتر از ${to}`}`,
-            paginationRowsPerPage: "تعداد در هر صفحه:",
+            paginationRowsPerPage: "تعداد ردیف‌ها در هر صفحه:",
           }}
           sx={{ borderRadius: "8px" }}
           disableColumnMenu

@@ -5,7 +5,6 @@ import { useActionState, useEffect } from "react";
 import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
 
 function DeletePatientForm({ patientId = "" }) {
-  console.log(patientId);
   const [state, formAction, pending] = useActionState(
     deletePatient.bind(null, patientId),
     null
