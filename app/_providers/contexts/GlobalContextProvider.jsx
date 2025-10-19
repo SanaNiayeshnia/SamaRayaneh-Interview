@@ -10,6 +10,9 @@ function GlobalContextProvider({ children }) {
   function resetToast() {
     setToast((toast) => ({ ...toast, open: false }));
   }
+  function openToast(params) {
+    setToast({ open: true, ...params });
+  }
 
   const [modal, setModal] = useState({ open: false });
   function openModal(params) {
@@ -22,7 +25,7 @@ function GlobalContextProvider({ children }) {
     }));
   }
 
-  const value = { toast, setToast, modal, openModal, closeModal };
+  const value = { toast, openToast, modal, openModal, closeModal };
 
   return (
     <globalContext.Provider value={value}>

@@ -9,22 +9,20 @@ function LoginForm() {
   const [state, formAction, isPending] = useActionState(loginAction, {
     status: "idle",
   });
-  const { setToast } = useGlobalContext();
+  const { openToast } = useGlobalContext();
   const router = useRouter();
 
   useEffect(() => {
     //display a toast based on the form status
     if (state?.status === "rejected")
-      setToast({
+      openToast({
         text: "ورود با خطا مواجه شد!",
         severity: "error",
-        open: true,
       });
     else if (state?.status === "succeeded") {
-      setToast({
+      openToast({
         text: "با موفقیت وارد شدید.",
         severity: "success",
-        open: true,
       });
       router.replace("/dashboard");
     }

@@ -5,6 +5,8 @@ import FormField from "../ui/form/FormField";
 import DatePicker from "../ui/form/DatePicker";
 import { Controller, useForm } from "react-hook-form";
 import FormSelect from "../ui/form/FormSelect";
+import { createPatientAction, updatePatientAction } from "@/app/_lib/actions";
+import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
 
 const isActiveOptions = [
   { label: "فعال", value: true },
@@ -12,8 +14,8 @@ const isActiveOptions = [
 ];
 
 function CreateUpdatePatientForm({ patient = {} }) {
-  console.log(patient);
   const isEditSession = Boolean(patient?.id);
+  const { openToast, closeModal } = useGlobalContext();
 
   const {
     register,
@@ -33,8 +35,36 @@ function CreateUpdatePatientForm({ patient = {} }) {
       : { name: "", email: "", dateOfBirth: new Date() },
   });
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+    if (isEditSession) {
+      const result = await updatePatientAction(data, patient.id);
+      if (result?.isSuccessed) {
+        openToast({
+          text: `بیمار ${result?.result?.name} با موفقیت ویرایش شد.`,
+          severity: "success",
+        });
+        closeModal();
+      } else {
+        openToast({
+          text: `ویرایش بیمار ${result?.result?.name} با خطا مواجه شد!`,
+          severity: "error",
+        });
+      }
+    } else {
+      const result = await createPatientAction(data);
+      if (result?.isSuccessed) {
+        openToast({
+          text: `بیمار ${data?.name} با موفقیت ایجاد شد.`,
+          severity: "success",
+        });
+        closeModal();
+      } else {
+        openToast({
+          text: `ایجاد بیمار با خطا مواجه شد!`,
+          severity: "error",
+        });
+      }
+    }
   }
 
   return (
@@ -74,9 +104,6 @@ function CreateUpdatePatientForm({ patient = {} }) {
         <Controller
           control={control}
           name="isActive"
-          rules={{
-            validate: (value) => value ?? "پر کردن این فیلد الزامی است!",
-          }}
           render={({ field }) => (
             <FormSelect
               labelId="isActive"
@@ -84,7 +111,6 @@ function CreateUpdatePatientForm({ patient = {} }) {
               options={isActiveOptions}
               value={field?.value}
               onChange={field?.onChange}
-              //   error={errors?.isActive?.message}
             />
           )}
         />

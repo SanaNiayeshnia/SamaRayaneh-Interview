@@ -37,20 +37,19 @@ function PatientsTable({ patients = [] }) {
       field: "name",
       headerName: "نام و نام‌خانوادگی",
       flex: 1.2,
-      align: "right",
       editable: false,
     },
     {
       field: "dateOfBirth",
       headerName: "تاریخ تولد",
       flex: 0.8,
-      align: "right",
       editable: false,
     },
     {
       field: "email",
       headerName: "ایمیل",
       flex: 1.2,
+      align: "right",
       editable: false,
     },
     {
