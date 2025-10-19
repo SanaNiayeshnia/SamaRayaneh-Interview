@@ -47,8 +47,9 @@ function ContextMenu({ items = [] }) {
           },
         }}
       >
-        {items?.map((item) => (
+        {items?.map((item, index) => (
           <MenuItem
+            key={index}
             onClick={item?.handler}
             sx={{
               fontSize: "14px",

@@ -1,14 +1,7 @@
 "use client";
 
 import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
-import {
-  CircularProgress,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
-import FormButton from "./form/FormButton";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 
 function CustomModal() {
   const { modal, closeModal } = useGlobalContext();
@@ -27,20 +20,6 @@ function CustomModal() {
     >
       <DialogTitle className="text-primary-500">{modal?.title}</DialogTitle>
       <DialogContent className="!pt-2">{modal?.content}</DialogContent>
-      {modal?.actions && (
-        <DialogActions>
-          <FormButton onClick={handleClose} variant="secondary">
-            لغو
-          </FormButton>
-          <FormButton type="submit" form={modal?.actions?.formId}>
-            {modal?.actions?.isPending && (
-              <CircularProgress color="black" size="18px" />
-            )}
-
-            {modal?.actions?.submitText || "تایید"}
-          </FormButton>
-        </DialogActions>
-      )}
     </Dialog>
   );
 }

@@ -13,10 +13,9 @@ function DatePicker({
     <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
       <MUIDatePicker
         label={label}
-        defaultValue={new Date(2022, 1, 1, 12)}
         localeText={{ okButtonLabel: "تایید", cancelButtonLabel: "لغو" }}
         renderInput={(params) => <TextField {...params} />}
-        value={value}
+        value={value || null}
         onChange={onChange}
         {...rest}
       />
