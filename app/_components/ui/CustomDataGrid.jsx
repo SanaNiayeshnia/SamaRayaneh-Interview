@@ -30,10 +30,13 @@ function CustomDataGrid({
               },
             },
           }}
-          pageSizeOptions={[10]}
+          pageSizeOptions={[5, 10, 15, 20]}
           disableRowSelectionOnClick
           localeText={{
             noRowsLabel,
+            paginationDisplayedRows: ({ from, to, count }) =>
+              `${from}–${to} از ${count !== -1 ? count : `بیشتر از ${to}`}`,
+            paginationRowsPerPage: "تعداد در هر صفحه:",
           }}
           sx={{ borderRadius: "8px" }}
           disableColumnMenu

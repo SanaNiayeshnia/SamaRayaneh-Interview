@@ -4,6 +4,8 @@ import PatientManagementMain from "@/app/_components/patientManagement/PatientMa
 import PatientsTable from "@/app/_components/patientManagement/PatientsTable";
 import { Suspense } from "react";
 
+export const metadata = { title: "مدیریت بیماران" };
+
 async function PatientManagement({ searchParams }) {
   const { status, sort } = await searchParams;
   return (

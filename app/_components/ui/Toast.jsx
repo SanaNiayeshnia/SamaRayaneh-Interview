@@ -20,7 +20,7 @@ function Toast({
           display: "flex",
           gap: "8px !important",
           alignItems: "center",
-          boxShadow: "2px 2px 3px var(--color-gray-300)",
+          boxShadow: "0px 0px 4px var(--color-gray-400)",
         },
       }}
     >
