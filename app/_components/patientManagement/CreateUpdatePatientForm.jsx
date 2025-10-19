@@ -4,14 +4,8 @@ import Form from "../ui/form/Form";
 import FormField from "../ui/form/FormField";
 import DatePicker from "../ui/form/DatePicker";
 import { Controller, useForm } from "react-hook-form";
-import FormSelect from "../ui/form/FormSelect";
 import { createPatientAction, updatePatientAction } from "@/app/_lib/actions";
 import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
-
-const isActiveOptions = [
-  { label: "فعال", value: true },
-  { label: "غیرفعال", value: false },
-];
 
 function CreateUpdatePatientForm({ patient = {} }) {
   const isEditSession = Boolean(patient?.id);
@@ -30,7 +24,6 @@ function CreateUpdatePatientForm({ patient = {} }) {
           dateOfBirth: patient.dateOfBirth
             ? new Date(patient.dateOfBirth.split("T")[0])
             : null,
-          isActive: patient?.isActive,
         }
       : { name: "", email: "", dateOfBirth: new Date() },
   });
@@ -100,21 +93,6 @@ function CreateUpdatePatientForm({ patient = {} }) {
           />
         )}
       />
-      {isEditSession && (
-        <Controller
-          control={control}
-          name="isActive"
-          render={({ field }) => (
-            <FormSelect
-              labelId="isActive"
-              label="وضعیت"
-              options={isActiveOptions}
-              value={field?.value}
-              onChange={field?.onChange}
-            />
-          )}
-        />
-      )}
     </Form>
   );
 }

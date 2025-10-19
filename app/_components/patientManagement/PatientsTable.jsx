@@ -8,9 +8,21 @@ import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvide
 import CreateUpdatePatientForm from "./CreateUpdatePatientForm";
 import PatientStatusToggler from "./PatientStatusToggler";
 import DeletePatientForm from "./DeletePatientForm";
+import { useSearchParams } from "next/navigation";
 
 function PatientsTable({ patients = [] }) {
   const { openModal } = useGlobalContext();
+  const searchParams = useSearchParams();
+  const patientStatusFilter = searchParams.get("status");
+  const filteredPatients = patientStatusFilter
+    ? patients?.filter((patient) =>
+        patientStatusFilter === "active"
+          ? patient.isActive === true
+          : patientStatusFilter === "notActive"
+          ? patient.isActive === false
+          : true
+      )
+    : patients;
 
   const patientActions = (patient) => [
     {
@@ -87,7 +99,7 @@ function PatientsTable({ patients = [] }) {
     },
   ];
 
-  const formattedPatients = patients?.result?.map((patient) => {
+  const formattedPatients = filteredPatients?.map((patient) => {
     const { name, dateOfBirth, email, isActive, id } = patient;
 
     return {

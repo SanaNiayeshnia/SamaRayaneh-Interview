@@ -17,13 +17,9 @@ function PatientStatusToggler({ checked = false, patientId = "" }) {
   }
 
   return (
-    <div className="flex items-center">
-      <p
-        className={`text-sm transition-all duration-300 ${
-          !optimisticStatus ? "text-primary-500" : ""
-        }`}
-      >
-        غیر فعال
+    <div className="flex items-center justify-center translate-y-1">
+      <p className={`text-sm transition-all duration-300 `}>
+        {optimisticStatus ? "فعال" : "غیرفعال"}
       </p>
       <Switch
         checked={optimisticStatus}
@@ -31,13 +27,6 @@ function PatientStatusToggler({ checked = false, patientId = "" }) {
         onChange={onChange}
         la
       />
-      <p
-        className={`text-sm transition-all duration-300 ${
-          optimisticStatus ? "text-primary-500" : ""
-        }`}
-      >
-        فعال
-      </p>
     </div>
   );
 }
