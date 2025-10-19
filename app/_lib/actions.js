@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 export async function loginAction() {
   const res = await request.get("/Interview/Auth");
   if (res?.data?.isSuccessed) {
-    await cookies().set("accessToken", res?.data?.result?.credential, {
+    (await cookies()).set("accessToken", res?.data?.result?.credential, {
       httpOnly: true,
       secure: true,
       sameSite: "strict",
@@ -68,6 +68,23 @@ export async function togglePatientActiveStatus(patientId) {
     } else if (res.status === 400) {
       console.log("ّFailed to update the patient: Invalid model!");
     } else console.log("ّFailed to update the patient");
+  } catch (error) {
+    console.error(error.message);
+    return { isSuccessed: false };
+  }
+}
+
+export async function deletePatient(patientId) {
+  console.log("delete__________________________", patientId);
+  try {
+    const res = await request.delete(`/Interview/patient/${patientId}`);
+    console.log("res", res);
+    if (res?.status === 200) {
+      revalidatePath("dashboard/patient-management");
+      return res?.data;
+    } else if (res.status === 404) {
+      console.log("ّFailed to delete the patient: Patient not found!");
+    } else console.log("ّFailed to delete the patient");
   } catch (error) {
     console.error(error.message);
     return { isSuccessed: false };

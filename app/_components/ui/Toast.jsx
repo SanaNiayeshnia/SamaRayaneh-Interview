@@ -14,12 +14,13 @@ function Toast({
       open={isOpen}
       autoHideDuration={duration}
       onClose={onClose}
-      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
       sx={{
         ".MuiPaper-root": {
           display: "flex",
           gap: "8px !important",
           alignItems: "center",
+          boxShadow: "2px 2px 3px var(--color-gray-300)",
         },
       }}
     >

@@ -1,6 +1,7 @@
 function FormButton({
   variant = "primary",
   className = "",
+  disabled = false,
   children,
   ...rest
 }) {
@@ -10,7 +11,7 @@ function FormButton({
         variant === "primary"
           ? "bg-primary-500 text-white hover:bg-primary-600"
           : "bg-gray-200 border border-gray-300 hover:bg-gray-300"
-      } ${className}`}
+      } ${disabled ? "opacity-70" : ""} ${className}`}
       {...rest}
     >
       {children}

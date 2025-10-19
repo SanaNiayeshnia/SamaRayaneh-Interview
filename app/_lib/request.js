@@ -10,6 +10,7 @@ export const request = axios.create({
 
 request.interceptors.request.use(
   async (config) => {
+    "use server";
     // Get token from cookies (or localStorage if not HttpOnly)
     const token = (await cookies()).get("accessToken")?.value;
     if (token) {
@@ -25,6 +26,7 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   (response) => response,
   async (error) => {
+    "use server";
     if (error.response?.status === 401) {
       console.log("Unauthorized! Redirecting to login...");
       (await cookies()).delete("accessToken");

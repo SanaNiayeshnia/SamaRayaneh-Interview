@@ -7,11 +7,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
 import CreateUpdatePatientForm from "./CreateUpdatePatientForm";
 import PatientStatusToggler from "./PatientStatusToggler";
+import DeletePatientForm from "./DeletePatientForm";
 
 function PatientsTable({ patients = [] }) {
   const { openModal } = useGlobalContext();
 
-  const contextMenuItems = (patient) => [
+  const patientActions = (patient) => [
     {
       label: "ویرایش",
       icon: EditIcon,
@@ -22,7 +23,16 @@ function PatientsTable({ patients = [] }) {
         });
       },
     },
-    { label: "حذف", icon: DeleteForeverIcon, handler: () => {} },
+    {
+      label: "حذف",
+      icon: DeleteForeverIcon,
+      handler: () => {
+        openModal({
+          title: `حذف بیمار ${patient?.name}`,
+          content: <DeletePatientForm patientId={patient?.id} />,
+        });
+      },
+    },
   ];
 
   const columns = [
@@ -71,7 +81,7 @@ function PatientsTable({ patients = [] }) {
       flex: 0.6,
       align: "center",
       renderCell: (params) => (
-        <ContextMenu items={contextMenuItems(params.formattedValue)} />
+        <ContextMenu items={patientActions(params.value)} />
       ),
       editable: false,
     },

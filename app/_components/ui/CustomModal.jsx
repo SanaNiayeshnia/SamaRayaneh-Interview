@@ -1,7 +1,12 @@
 "use client";
 
 import { useGlobalContext } from "@/app/_providers/contexts/GlobalContextProvider";
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 
 function CustomModal() {
   const { modal, closeModal } = useGlobalContext();
