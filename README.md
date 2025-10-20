@@ -1,9 +1,3 @@
-# 🧭 Next.js Project
-
-A modern web application built with **Next.js**, **React**, and **Material UI**.
-
----
-
 ## 🚀 Features
 
 - ⚡️ Next.js (App Router)
@@ -57,7 +51,7 @@ This project uses a local environment file named `.env.local`.
 Create a file named `.env.local` in the root of your project and add the following variable:
 
 ```env
-NEXT_PUBLIC_BASE_URL=https://your-api-url.com
+NEXT_PUBLIC_BASE_URL=https://api.samateb.ir/API
 ```
 
 ---
